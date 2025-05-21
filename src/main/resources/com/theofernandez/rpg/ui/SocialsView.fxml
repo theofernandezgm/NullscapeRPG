@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<VBox fx:controller="com.theofernandez.rpg.ui.SocialsViewController" spacing="10" alignment="CENTER" styleClass="root" xmlns:fx="http://javafx.com/fxml/1">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    <Label text="Socials / Factions / NPCs" styleClass="title-label"/>
+    <Label text="(Information about relationships, factions, important NPCs, etc.)"/>
+    <Button text="Back to Game World" onAction="#handleBackButtonAction"/>
+</VBox>
