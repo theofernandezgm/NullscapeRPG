@@ -7,53 +7,42 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
 <VBox fx:controller="com.theofernandez.rpg.ui.NewGameViewController"
-      alignment="CENTER" spacing="15" styleClass="root"
-      xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+      alignment="CENTER"
+      spacing="15"
+      styleClass="root"
+      xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/17">
     <padding>
         <Insets top="25" right="50" bottom="25" left="50"/>
     </padding>
 
-    <Label text="Create Your Character" styleClass="title-label">
-        <font>
-            <Font name="Serif Bold" size="28"/>
-        </font>
-    </Label>
+    <Label text="Create Your Character" styleClass="title-label"/>
 
-    <GridPane hgap="10" vgap="10" alignment="CENTER_LEFT">
-        <columnConstraints>
-            <ColumnConstraints halignment="RIGHT" minWidth="100.0" prefWidth="120.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="250.0"/>
-        </columnConstraints>
+    <GridPane hgap="10" vgap="10" alignment="CENTER"> <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" minWidth="100.0" prefWidth="120.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="250.0"/>
+    </columnConstraints>
 
-        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="playerNameField" promptText="Enter name" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="category-label"/>
+        <TextField fx:id="playerNameField" promptText="Enter name (1-25 chars)" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-        <Label text="Sex:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label text="Sex:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="category-label"/>
         <ChoiceBox fx:id="sexChoiceBox" prefWidth="250.0" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-        <Label text="Body Type:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Label text="Body Type:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="category-label"/>
         <ChoiceBox fx:id="bodyTypeChoiceBox" prefWidth="250.0" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-        <rowConstraints>
-            <RowConstraints minHeight="30.0"/>
-            <RowConstraints minHeight="30.0"/>
-            <RowConstraints minHeight="30.0"/>
-        </rowConstraints>
     </GridPane>
 
-    <Label text="(More attributes like stats will go here later)" style="-fx-font-style: italic;"/>
-
-    <VBox alignment="CENTER" spacing="10">
-        <padding>
-            <Insets top="20"/>
-        </padding>
-        <Button fx:id="startGameButton" text="Start Game" onAction="#handleStartGameAction"/>
-        <Button fx:id="backButton" text="Back to Main Menu" onAction="#handleBackButtonAction"/>
-    </VBox>
+    <Label text="(Detailed stats will be determined by choices and initial conditions.)"
+           style="-fx-font-style: italic; -fx-text-fill: #A0A0A0;"
+           wrapText="true"/> <VBox alignment="CENTER" spacing="10">
+    <padding>
+        <Insets top="20"/>
+    </padding>
+    <Button text="Start Game" onAction="#handleStartGameAction"/>
+    <Button text="Back to Main Menu" onAction="#handleBackButtonAction"/>
+</VBox>
 </VBox>

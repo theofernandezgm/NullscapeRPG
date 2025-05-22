@@ -1,23 +1,57 @@
-/* src/main/resources/css/styles.css - Enhanced Dark Material Theme */
+/* styles.css - Enhanced Dark Material Theme */
 
 /* --- Base and Root Styling --- */
 .root {
-    -fx-background-color: #212121; /* Darker, more material background */
-    -fx-font-family: "Roboto", "SansSerif"; /* Roboto if available, fallback to SansSerif */
-    /* Consider adding Roboto font to your project resources if you want to ensure its use */
+    -fx-background-color: #212121; /* Dark base background */
+    -fx-font-family: "Roboto", "SansSerif"; /* Roboto if available, fallback */
+    -fx-focus-color: #009688;       /* Teal accent for focus rings */
+    -fx-faint-focus-color: #00968833; /* Lighter, transparent focus for some controls */
+}
+
+/* --- General Pane/Container Transparency & Default Styling --- */
+/* Ensure layout panes don't have their own conflicting light backgrounds */
+.vbox, .hbox, .border-pane, .grid-pane, .scroll-pane, .tab-pane,
+.dialog-pane { /* Added dialog-pane for Alerts consistency */
+    -fx-background-color: transparent; /* Allow root background to show through */
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent; /* Crucial for scrollable content areas */
 }
 
 /* --- General Label Styling --- */
 .label {
-    -fx-text-fill: #E0E0E0; /* Light grey text for general labels */
+    -fx-text-fill: #E0E0E0; /* Default: Light grey for good readability on dark */
     -fx-font-size: 14px;
 }
 
+/* For main view titles (e.g., "Character Sheet", "Settings") */
 .title-label {
-    -fx-font-size: 32px;
-    -fx-font-family: "Roboto Medium", "Serif"; /* Bolder for titles */
-    -fx-text-fill: #FFFFFF;   /* White for prominent titles */
-    -fx-padding: 0 0 20px 0; /* Consistent padding definition */
+    -fx-font-size: 26px;
+    -fx-font-family: "Roboto Medium", "Serif";
+    -fx-text-fill: #FFFFFF;   /* Pure white for main titles */
+    -fx-padding: 10px 0 20px 0; /* top right bottom left */
+}
+
+/* For section headers within a view (e.g., "Basic Information", "Core Attributes") */
+.section-title-label {
+    -fx-font-size: 18px;
+    -fx-font-family: "Roboto Medium", "Serif";
+    -fx-text-fill: #00BFA5;   /* Brighter teal for distinct section headers */
+    -fx-padding: 15px 0 8px 0; /* More top padding for section separation */
+}
+
+/* For labels describing a data field (e.g., "Name:", "Health:") */
+.category-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #BDBDBD; /* A distinct, slightly brighter grey, but not pure white */
+    -fx-font-size: 14px;
+}
+
+/* For labels displaying the actual data/values */
+.data-label {
+    -fx-text-fill: #D0D0D0; /* Softer than E0E0E0 for less overall brightness in dense areas */
+    -fx-font-size: 14px;
 }
 
 /* --- Button Styling --- */
@@ -29,19 +63,17 @@
     -fx-padding: 10px 20px;
     -fx-background-radius: 4px;
     -fx-border-width: 0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2); /* Softer, more standard shadow */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);
     -fx-cursor: hand;
     -fx-line-spacing: 0; /* Ensure text is centered if it wraps */
 }
-
 .button:hover {
     -fx-background-color: #616161; /* Lighter grey on hover */
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);
 }
-
 .button:pressed {
     -fx-background-color: #303030; /* Darker when pressed */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 5, 0, 0, 1); /* Less shadow when pressed */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 5, 0, 0, 1);
 }
 
 /* --- CheckBox Styling --- */
@@ -49,181 +81,219 @@
     -fx-text-fill: #E0E0E0; /* Text next to checkbox */
     -fx-font-size: 14px;
 }
-
 .check-box .box {
-    -fx-background-color: #424242;
-    -fx-border-color: #757575;
+    -fx-background-color: #424242; /* Dark box background */
+    -fx-border-color: #757575;     /* Grey border */
     -fx-border-radius: 3px;
     -fx-background-radius: 3px;
 }
-
 .check-box:selected .mark {
     -fx-background-color: #FFFFFF; /* White check mark */
 }
-
 .check-box:selected .box {
     -fx-background-color: #009688; /* Teal accent for selected box background */
-    -fx-border-color: #00796B;
+    -fx-border-color: #00796B;     /* Darker teal border when selected */
 }
-
 .check-box:hover .box {
     -fx-border-color: #00BFA5; /* Brighter Teal border on hover for more feedback */
 }
 
 /* --- Slider Styling --- */
 .slider {
-    -fx-padding: 5px 0;
+    -fx-padding: 5px 0; /* Vertical padding around the slider */
 }
-
 .slider .track {
     -fx-background-color: #616161; /* Darker track */
     -fx-background-radius: 3px;
     -fx-pref-height: 6px;
 }
-
 .slider .thumb {
     -fx-background-color: #009688; /* Teal accent for thumb */
-    -fx-background-radius: 10px; /* Circular thumb */
-    -fx-padding: 8px; /* Makes thumb appear larger and easier to grab */
+    -fx-background-radius: 10px;  /* Circular thumb */
+    -fx-padding: 8px;             /* Makes thumb appear larger and easier to grab */
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
 }
-
 .slider .thumb:hover {
     -fx-background-color: #00796B; /* Darker teal on hover */
 }
-
 .slider .axis .axis-tick-mark {
     -fx-stroke: #757575; /* Color for tick marks */
 }
-
 .slider .axis .axis-label, .slider .tick-label { /* Combined for consistency */
     -fx-text-fill: #BDBDBD; /* Color for tick labels */
     -fx-font-size: 10px;
 }
 
-
 /* --- ChoiceBox Styling --- */
 .choice-box {
-    -fx-background-color: #424242;
-    -fx-mark-color: #FFFFFF; /* Color of the dropdown arrow */
+    -fx-background-color: #424242;   /* Dark background for the control */
+    -fx-mark-color: #FFFFFF;         /* Color of the dropdown arrow */
     -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;          /* Default text color for selected item shown */
     -fx-background-radius: 4px;
-    -fx-pref-width: 200px; /* Ensure it has some width, can be overridden in FXML */
+    -fx-pref-width: 200px;           /* Default width, can be overridden in FXML */
 }
-
 .choice-box .label { /* Text of the selected item in the ChoiceBox itself */
     -fx-text-fill: #FFFFFF;
     -fx-padding: 5px 10px 5px 5px; /* top right bottom left */
 }
-
 .choice-box .open-button { /* The arrow button part of the ChoiceBox */
-    -fx-padding: 8px; /* Adjust padding for the arrow region */
+    -fx-padding: 8px;
 }
-
 .choice-box .context-menu { /* The dropdown list itself */
-    -fx-background-color: #3C3C3C;
+    -fx-background-color: #3C3C3C;      /* Dark background for dropdown */
     -fx-background-radius: 0 0 4px 4px; /* Match main radius for bottom corners */
     -fx-border-color: #616161;
-    -fx-border-width: 0 1px 1px 1px; /* No top border as it connects */
+    -fx-border-width: 0 1px 1px 1px;    /* No top border as it connects */
 }
-
 .choice-box .menu-item { /* Individual items in the dropdown */
-    -fx-background-color: transparent; /* Default state */
+    -fx-background-color: transparent;  /* Default state */
+    -fx-padding: 5px 10px;             /* Consistent padding for items */
 }
-
 .choice-box .menu-item .label { /* Text of items in the dropdown list */
-    -fx-text-fill: #E0E0E0;
+    -fx-text-fill: #E0E0E0;       /* Standard light grey for dropdown items */
     -fx-font-size: 14px;
-    -fx-padding: 5px 10px; /* Consistent padding for items */
 }
-
 .choice-box .menu-item:hover {
     -fx-background-color: #5A5A5A; /* Hover color for items in dropdown */
 }
 .choice-box .menu-item:hover .label {
-    -fx-text-fill: #FFFFFF; /* Brighter text on hover */
+    -fx-text-fill: #FFFFFF;       /* Brighter text on hover for better contrast */
 }
-
 .choice-box .menu-item:focused { /* Selected item indication in dropdown */
      -fx-background-color: #00796B; /* Teal accent for selected item in dropdown */
 }
 .choice-box .menu-item:focused .label {
-    -fx-text-fill: #FFFFFF; /* White text for selected item */
+    -fx-text-fill: #FFFFFF;       /* White text for selected item in dropdown */
 }
 
-
-/* --- ListView Styling (for Load Game screen and implicitly affects ChoiceBox dropdown) --- */
+/* --- ListView Styling --- */
 .list-view {
-    -fx-background-color: #3C3C3C; /* Slightly lighter than root for contrast */
-    -fx-border-color: #616161; /* Subtle border */
+    -fx-background-color: #2C2C2C; /* Darker background for list views for good contrast */
+    -fx-border-color: #4A4A4A;     /* Slightly more defined border */
     -fx-border-width: 1px;
-    -fx-background-insets: 0; /* Important for border visibility */
+    -fx-background-insets: 0;      /* Important for border visibility */
 }
-
 .list-cell {
-    -fx-text-fill: #E0E0E0; /* Default text color for items */
+    -fx-text-fill: #D0D0D0;       /* Softer text color for items */
     -fx-background-color: transparent; /* Default background */
     -fx-padding: 8px 12px;
     -fx-font-size: 14px;
     -fx-border-color: transparent; /* No borders between cells by default */
-     /* -fx-border-width: 0 0 1px 0; -fx-border-color: #4A4A4A; */ /* Optional: subtle separator lines */
 }
-
 .list-cell:filled:hover {
     -fx-background-color: #5A5A5A; /* Hover effect */
-    -fx-text-fill: #FFFFFF; /* Brighter text on hover */
+    -fx-text-fill: #FFFFFF;       /* Brighter text on hover */
 }
-
 .list-cell:filled:selected,
 .list-cell:filled:selected:focused { /* Combined for consistency */
     -fx-background-color: #009688; /* Teal accent for selected item */
-    -fx-text-fill: #FFFFFF; /* White text for selected item */
+    -fx-text-fill: #FFFFFF;       /* White text for selected item */
 }
-
-.list-cell:empty { /* Style for empty cells if any, e.g. placeholder */
-    -fx-background-color: transparent;
-    -fx-padding: 8px 12px; /* Keep padding consistent */
+.list-cell:empty { /* Style for empty cells if any, e.g. placeholder area */
+    -fx-background-color: transparent; /* Or match .list-view background if preferred */
+    -fx-padding: 8px 12px;             /* Keep padding consistent */
 }
 .list-view .placeholder .label { /* Styling for placeholder text like "No save files" */
-    -fx-text-fill: #BDBDBD;
+    -fx-text-fill: #BDBDBD;       /* Lighter grey for placeholder text */
 }
 
-
-/* --- GridPane Styling (optional, if you want to add borders or padding) --- */
+/* --- GridPane Styling (already transparent due to general pane rule) --- */
 .grid-pane {
-    /* -fx-grid-lines-visible: true; */ /* Uncomment to see grid lines for debugging layout */
-    /* -fx-hgap: 10; */ /* Usually set in FXML if needed per instance */
-    /* -fx-vgap: 15; */ /* Usually set in FXML if needed per instance */
+    /* -fx-grid-lines-visible: true; */ /* Uncomment for debugging layout */
 }
 
-/* Specific styling for the event log area */
-.text-area {
-    -fx-background-color: #2C2C2C;
-    -fx-text-fill: #C0C0C0; /* Light grey text for readability */
-    -fx-font-family: "Consolas", "Monospaced"; /* Monospaced font for logs */
+/* --- TextFlow (used in CharacterPage for inventory) --- */
+.text-flow {
+    -fx-line-spacing: 3px; /* Add some line spacing if text wraps */
+}
+/* Specific style for Text nodes within the inventory TextFlow on CharacterPage */
+.character-page-inventory-text-flow .text {
+    -fx-fill: #C8C8C8;   /* Readable, but not too bright for potentially dense inventory lists */
+    -fx-font-size: 13px; /* Slightly smaller if inventory lists are long */
+}
+
+
+/* --- TextArea Styling (e.g., for Event Log) --- */
+.text-area, .text-area .content { /* Target both for consistent background */
+    -fx-background-color: #2A2A2A; /* Slightly distinct dark background */
+    -fx-text-fill: #C8C8C8;        /* Readable, slightly softer white for log text */
+    -fx-font-family: "Consolas", "Monospaced"; /* Good for logs */
     -fx-font-size: 13px;
     -fx-border-color: #4A4A4A;
     -fx-border-width: 1px;
     -fx-background-insets: 0;
     -fx-padding: 5px;
+    -fx-prompt-text-fill: #757575; /* Color for any prompt text if used */
 }
 
-.text-area .content { /* The actual text content area */
-    -fx-background-color: #2C2C2C; /* Match text-area background */
+/* --- ScrollBar General Styling --- */
+/* Applies to ListView, ScrollPane, TextArea scrollbars */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: #2C2C2C; /* Background of the scrollbar track area */
+    -fx-background-radius: 0;      /* Square scrollbars for a cleaner look */
+    -fx-padding: 2px;              /* Small padding around the track */
 }
-
-.text-area .scroll-pane {
-    -fx-background-color: #2C2C2C;
+.scroll-bar .thumb {
+    -fx-background-color: #616161; /* Thumb color */
+    -fx-background-insets: 0;      /* No insets for a flatter thumb */
+    -fx-background-radius: 4px;    /* Rounded thumb */
 }
-
-.text-area .scroll-bar:vertical, .text-area .scroll-bar:horizontal {
-    -fx-background-color: #3C3C3C;
+.scroll-bar .thumb:hover {
+    -fx-background-color: #757575; /* Lighter thumb on hover */
 }
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: #3C3C3C; /* Dark buttons */
+    -fx-background-radius: 0;      /* Square buttons */
+    -fx-padding: 5px;              /* Size of the buttons */
+}
+.scroll-bar .increment-button:hover, .scroll-bar .decrement-button:hover {
+    -fx-background-color: #4A4A4A;
+}
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-shape: " "; /* Hide default JavaFX arrows for a cleaner look; can be replaced with SVG paths */
+    -fx-padding: 0.20em;
+}
+.scroll-bar:vertical .increment-arrow { -fx-shape: "M 0 -0.5 L 1 0.5 L -1 0.5 Z"; -fx-background-color: #9E9E9E;} /* Down arrow */
+.scroll-bar:vertical .decrement-arrow { -fx-shape: "M 0 0.5 L 1 -0.5 L -1 -0.5 Z"; -fx-background-color: #9E9E9E;} /* Up arrow */
+.scroll-bar:horizontal .increment-arrow { -fx-shape: "M -0.5 0 L 0.5 1 L 0.5 -1 Z"; -fx-background-color: #9E9E9E;} /* Right arrow */
+.scroll-bar:horizontal .decrement-arrow { -fx-shape: "M 0.5 0 L -0.5 1 L -0.5 -1 Z"; -fx-background-color: #9E9E9E;} /* Left arrow */
 
-.text-area .scroll-bar .thumb {
+
+/* --- Dialog Pane Styling (for Alerts) --- */
+.dialog-pane {
+    -fx-background-color: #303030;  /* Dark background for dialogs */
+    -fx-border-color: #505050;      /* Subtle border */
+    -fx-border-width: 1px;
+    -fx-padding: 15px;             /* Padding inside the dialog */
+}
+.dialog-pane > .label.content { /* Content text of the dialog */
+    -fx-text-fill: #E0E0E0;
+    -fx-font-size: 14px;
+}
+.dialog-pane > .header-panel { /* Panel containing header text and graphic */
+    -fx-background-color: #383838; /* Slightly different background for header */
+    -fx-padding: 10px;
+}
+.dialog-pane > .header-panel > .label { /* Header text specifically */
+    -fx-text-fill: #EAEAEA;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+.dialog-pane > .button-bar > .container { /* Container for buttons */
+    /* Spacing is handled by ButtonBar itself */
+}
+/* Dialog buttons will inherit .button style; can be overridden if needed */
+.dialog-pane .button {
+    -fx-background-color: #4A4A4A; /* Slightly different button color for dialogs */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+}
+.dialog-pane .button:hover {
     -fx-background-color: #616161;
-    -fx-background-radius: 4px;
 }
-.text-area .scroll-bar .thumb:hover {
-    -fx-background-color: #757575;
-}
+
+/* Ensure Character Page (and other content-heavy views) specifically don't introduce unwanted light backgrounds */
+/* This is mostly handled by the .scroll-pane > .viewport and general pane transparency rules now. */
+/* .character-page-scroll-pane { ... } /* If specific styling for the character page's scrollpane is needed */

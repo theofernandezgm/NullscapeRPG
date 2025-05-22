@@ -6,122 +6,141 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-
 <VBox fx:controller="com.theofernandez.rpg.ui.CharacterPageViewController"
-      spacing="10" alignment="TOP_CENTER" styleClass="root"
-      xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+      spacing="10" alignment="TOP_CENTER" styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
     <padding>
         <Insets top="15" right="20" bottom="15" left="20"/>
     </padding>
 
-    <Label text="Character Sheet" styleClass="title-label">
-        <font><Font name="Serif Bold" size="24"/></font>
-    </Label>
+    <Label text="Character Sheet" styleClass="title-label"/> <ScrollPane fx:id="scrollPane" fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="character-page-scroll-pane">
+    <VBox fx:id="statsContainer" spacing="18" style="-fx-padding: 10px;">
+        <Label text="Basic Information" styleClass="section-title-label"/>
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/>
+                <ColumnConstraints hgrow="ALWAYS" prefWidth="250"/>
+            </columnConstraints>
+            <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="nameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="data-label" wrapText="true"/>
+            <Label text="Age:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="ageLabel" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Sex:" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="sexLabel" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Ethnicity:" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="ethnicityLabel" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="data-label" wrapText="true"/>
+            <Label text="Height:" GridPane.rowIndex="4" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="heightLabel" GridPane.rowIndex="4" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Weight:" GridPane.rowIndex="5" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="weightLabel" GridPane.rowIndex="5" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Blood Type:" GridPane.rowIndex="6" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="bloodTypeLabel" GridPane.rowIndex="6" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Body Type:" GridPane.rowIndex="7" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="bodyTypeLabel" GridPane.rowIndex="7" GridPane.columnIndex="1" styleClass="data-label"/>
+        </GridPane>
 
-    <ScrollPane fx:id="scrollPane" fitToWidth="true" VBox.vgrow="ALWAYS">
-        <VBox fx:id="statsContainer" spacing="15" style="-fx-padding: 10;">
+        <Label text="Core Attributes" styleClass="section-title-label"/>
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/> <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/> <ColumnConstraints prefWidth="120"/>
+            </columnConstraints>
+            <Label text="Luck:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="luckLabel" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Beauty:" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="beautyLabel" GridPane.rowIndex="0" GridPane.columnIndex="3" styleClass="data-label"/>
 
-            <Label text="Basic Information" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true;"/>
-            <GridPane hgap="10" vgap="5">
-                <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/>
-                    <ColumnConstraints prefWidth="250"/>
-                </columnConstraints>
-                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <Label fx:id="nameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Label text="Age:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <Label fx:id="ageLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <Label text="Sex:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                <Label fx:id="sexLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                <Label text="Ethnicity:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                <Label fx:id="ethnicityLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-                <Label text="Height:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-                <Label fx:id="heightLabel" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-                <Label text="Weight:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-                <Label fx:id="weightLabel" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-                <Label text="Blood Type:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
-                <Label fx:id="bloodTypeLabel" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
-                <Label text="Body Type:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
-                <Label fx:id="bodyTypeLabel" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
-            </GridPane>
+            <Label text="Intelligence (Base):" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="intelligenceLabel" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Intelligence (Eff):" GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="effectiveIntelligenceLabel" GridPane.rowIndex="1" GridPane.columnIndex="3" styleClass="data-label"/>
+        </GridPane>
 
-            <Label text="Core Attributes" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true; -fx-padding-top: 10;"/>
-            <GridPane hgap="10" vgap="5">
-                <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/> <ColumnConstraints prefWidth="100"/>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/> <ColumnConstraints prefWidth="100"/>
-                </columnConstraints>
-                <Label text="Luck:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <Label fx:id="luckLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Label text="Beauty:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                <Label fx:id="beautyLabel" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-                <Label text="Intelligence:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <Label fx:id="intelligenceLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-            </GridPane>
+        <Label text="Physical Capabilities" styleClass="section-title-label"/>
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/> <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/> <ColumnConstraints prefWidth="120"/>
+            </columnConstraints>
+            <Label text="Upper Str (Base):" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="upperBodyStrengthLabel" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Upper Str (Eff):" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="effectiveUpperBodyStrengthLabel" GridPane.rowIndex="0" GridPane.columnIndex="3" styleClass="data-label"/>
 
-            <Label text="Physical Capabilities" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true; -fx-padding-top: 10;"/>
-            <GridPane hgap="10" vgap="5">
-                <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/> <ColumnConstraints prefWidth="100"/>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/> <ColumnConstraints prefWidth="100"/>
-                </columnConstraints>
-                <Label text="Upper Strength:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <Label fx:id="upperBodyStrengthLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Label text="Lower Strength:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                <Label fx:id="lowerBodyStrengthLabel" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-                <Label text="Endurance:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <Label fx:id="enduranceLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <Label text="Agility:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                <Label fx:id="agilityLabel" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-                <Label text="Speed:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                <Label fx:id="speedLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-                <Label text="Dexterity:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-                <Label fx:id="dexterityLabel" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
-            </GridPane>
+            <Label text="Lower Str (Base):" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="lowerBodyStrengthLabel" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Lower Str (Eff):" GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="effectiveLowerBodyStrengthLabel" GridPane.rowIndex="1" GridPane.columnIndex="3" styleClass="data-label"/>
 
-            <Label text="Health &amp; Needs" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true; -fx-padding-top: 10;"/>
-            <GridPane hgap="10" vgap="5">
-                <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/> <ColumnConstraints prefWidth="100"/>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/> <ColumnConstraints prefWidth="100"/>
-                </columnConstraints>
-                <Label text="Health:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <Label fx:id="healthLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Label text="Fatigue:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                <Label fx:id="fatigueLabel" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-                <Label text="Hunger:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <Label fx:id="hungerLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <Label text="Thirst:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                <Label fx:id="thirstLabel" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-            </GridPane>
+            <Label text="Endurance (Base):" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="enduranceLabel" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Agility (Base):" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="agilityLabel" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Agility (Eff):" GridPane.rowIndex="3" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="effectiveAgilityLabel" GridPane.rowIndex="3" GridPane.columnIndex="3" styleClass="data-label"/>
 
-            <Label text="Status" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true; -fx-padding-top: 10;"/>
-            <GridPane hgap="10" vgap="5">
-                <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/> <ColumnConstraints prefWidth="100"/>
-                    <ColumnConstraints halignment="RIGHT" prefWidth="150"/> <ColumnConstraints prefWidth="100"/>
-                </columnConstraints>
-                <Label text="Alive:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <Label fx:id="isAliveLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Label text="Conscious:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                <Label fx:id="isConsciousLabel" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-                <Label text="Awake:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <Label fx:id="isAwakeLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <Label text="Current Mood:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-                <Label fx:id="moodLabel" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-            </GridPane>
+            <Label text="Speed (Base):" GridPane.rowIndex="4" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="speedLabel" GridPane.rowIndex="4" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Speed (Eff):" GridPane.rowIndex="4" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="effectiveSpeedLabel" GridPane.rowIndex="4" GridPane.columnIndex="3" styleClass="data-label"/>
 
-            <Label text="Inventory" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true; -fx-padding-top: 10;"/>
-            <TextFlow fx:id="inventoryTextFlow" prefHeight="60.0"/>
+            <Label text="Dexterity (Base):" GridPane.rowIndex="5" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="dexterityLabel" GridPane.rowIndex="5" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Dexterity (Eff):" GridPane.rowIndex="5" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="effectiveDexterityLabel" GridPane.rowIndex="5" GridPane.columnIndex="3" styleClass="data-label"/>
+        </GridPane>
 
-        </VBox>
-    </ScrollPane>
+        <Label text="Health &amp; Needs" styleClass="section-title-label"/>
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/> <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/> <ColumnConstraints prefWidth="120"/>
+            </columnConstraints>
+            <Label text="Health:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="healthLabel" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Fatigue:" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="fatigueLabel" GridPane.rowIndex="0" GridPane.columnIndex="3" styleClass="data-label"/>
+
+            <Label text="Satiation (Hunger):" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="hungerLabel" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Hydration (Thirst):" GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="thirstLabel" GridPane.rowIndex="1" GridPane.columnIndex="3" styleClass="data-label"/>
+
+            <Label text="Restedness (Sleep):" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="sleepLabel" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Hygiene:" GridPane.rowIndex="2" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="hygieneLabel" GridPane.rowIndex="2" GridPane.columnIndex="3" styleClass="data-label"/>
+
+            <Label text="Comfort:" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="comfortLabel" GridPane.rowIndex="3" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Stress:" GridPane.rowIndex="3" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="stressLabel" GridPane.rowIndex="3" GridPane.columnIndex="3" styleClass="data-label"/>
+        </GridPane>
+
+        <Label text="Status" styleClass="section-title-label"/>
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/> <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints halignment="RIGHT" prefWidth="160"/> <ColumnConstraints prefWidth="120"/>
+            </columnConstraints>
+            <Label text="Alive:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="isAliveLabel" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Conscious:" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="isConsciousLabel" GridPane.rowIndex="0" GridPane.columnIndex="3" styleClass="data-label"/>
+
+            <Label text="Awake:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="category-label"/>
+            <Label fx:id="isAwakeLabel" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="data-label"/>
+            <Label text="Current Mood:" GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="category-label"/>
+            <Label fx:id="moodLabel" GridPane.rowIndex="1" GridPane.columnIndex="3" styleClass="data-label" wrapText="true"/>
+        </GridPane>
+
+        <Label text="Inventory" styleClass="section-title-label"/>
+        <TextFlow fx:id="inventoryTextFlow" prefHeight="60.0" styleClass="character-page-inventory-text-flow"/>
+
+    </VBox>
+</ScrollPane>
 
     <Button text="Back to Game World" onAction="#handleBackButtonAction" maxWidth="Infinity">
         <VBox.margin><Insets top="10"/></VBox.margin>
