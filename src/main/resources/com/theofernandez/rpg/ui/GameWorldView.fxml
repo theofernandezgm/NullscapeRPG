@@ -11,17 +11,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.Priority?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Rectangle?> <?import javafx.scene.paint.Color?>      <?import javafx.scene.text.Font?>        <?import javafx.scene.control.ListView?>
 
-<?import javafx.scene.control.ListView?>
 <BorderPane fx:controller="com.theofernandez.rpg.ui.GameWorldViewController"
             styleClass="root" prefHeight="720.0" prefWidth="1024.0"
             xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
 
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10px; -fx-border-color: #444; -fx-border-width: 0 0 1 0;">
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 10px; -fx-border-color: #444; -fx-border-width: 0 0 1px 0;">
             <Label fx:id="welcomeLabel" text="Welcome!" styleClass="title-label">
                 <font><Font name="Serif Bold" size="22"/></font>
             </Label>
@@ -32,33 +29,34 @@
     </top>
 
     <left>
-        <VBox spacing="15" style="-fx-padding: 15px; -fx-border-color: #444; -fx-border-width: 0 1 0 0;" prefWidth="250.0">
-            <Label text="Character" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true;"/>
-            <Rectangle fx:id="characterImagePlaceholder" width="220" height="150" fill="#33373D" stroke="#55595D"/>
-            <GridPane hgap="5" vgap="3">
+        <VBox spacing="15" style="-fx-padding: 15px; -fx-border-color: #444; -fx-border-width: 0 1px 0 0;" prefWidth="250.0">
+            <Label text="Character" styleClass="section-title-label"/> <Rectangle fx:id="characterImagePlaceholder" width="220" height="150" fill="#33373D" stroke="#55595D" style="-fx-arc-width: 5; -fx-arc-height: 5;"/>
+
+            <GridPane hgap="5" vgap="3" style="-fx-padding: 5 0 0 0;">
                 <columnConstraints>
                     <ColumnConstraints halignment="LEFT" prefWidth="70.0"/>
                     <ColumnConstraints hgrow="SOMETIMES" prefWidth="150.0"/>
                 </columnConstraints>
                 <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <Label fx:id="playerNameLabel" text="N/A" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label fx:id="playerNameLabel" text="N/A" GridPane.rowIndex="0" GridPane.columnIndex="1" wrapText="true"/>
                 <Label text="Age:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
                 <Label fx:id="playerAgeLabel" text="N/A" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
                 <Label text="Sex:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
                 <Label fx:id="playerSexLabel" text="N/A" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Mood:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="playerMoodLabel" text="N/A" GridPane.rowIndex="3" GridPane.columnIndex="1" wrapText="true"/>
             </GridPane>
-            <Label text="Needs" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true; -fx-padding-top:10px;"/>
-            <GridPane hgap="5" vgap="3">
+
+            <Label text="Needs" styleClass="section-title-label" style="-fx-padding-top:10px;"/>
+            <GridPane hgap="5" vgap="3" style="-fx-padding: 5 0 0 0;">
                 <columnConstraints>
                     <ColumnConstraints halignment="LEFT" prefWidth="70.0"/>
                     <ColumnConstraints hgrow="SOMETIMES" prefWidth="150.0"/>
                 </columnConstraints>
                 <Label text="Health:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
                 <Label fx:id="playerHealthLabel" text="N/A" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Label text="Hunger:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                <Label fx:id="hungerLabel" text="N/A" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                <Label text="Thirst:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                <Label fx:id="thirstLabel" text="N/A" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Satiation:" GridPane.rowIndex="1" GridPane.columnIndex="0"/> <Label fx:id="hungerLabel" text="N/A" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Hydration:" GridPane.rowIndex="2" GridPane.columnIndex="0"/> <Label fx:id="thirstLabel" text="N/A" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
                 <Label text="Fatigue:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
                 <Label fx:id="fatigueLabel" text="N/A" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
             </GridPane>
@@ -67,30 +65,28 @@
 
     <center>
         <VBox spacing="10" style="-fx-padding: 15px;">
-            <Label text="Events Log:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-            <TextArea fx:id="eventLogArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS" prefHeight="300.0"/>
-            <Label text="Actions:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding-top:10px;"/>
-            <VBox fx:id="actionChoicesBox" spacing="10" alignment="CENTER_LEFT">
-                <Button fx:id="exploreButton" text="Explore Surroundings" onAction="#handleExploreAction" maxWidth="Infinity"/>
+            <Label text="Events Log:" styleClass="section-title-label"/>
+            <TextArea fx:id="eventLogArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS" prefHeight="300.0" styleClass="event-log-text-area"/> <Label text="Actions:" styleClass="section-title-label" style="-fx-padding-top:10px;"/>
+            <VBox fx:id="actionChoicesBox" spacing="10" alignment="TOP_LEFT"> <Button fx:id="exploreButton" text="Explore Surroundings" onAction="#handleExploreAction" maxWidth="Infinity"/>
             </VBox>
         </VBox>
     </center>
 
     <right>
-        <VBox spacing="15" style="-fx-padding: 15px; -fx-border-color: #444; -fx-border-width: 0 0 0 1;" prefWidth="250.0">
-            <Label text="Map" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true;"/>
-            <Rectangle fx:id="mapPlaceholder" width="220" height="150.0" fill="#33373D" stroke="#55595D"/>
+        <VBox spacing="15" style="-fx-padding: 15px; -fx-border-color: #444; -fx-border-width: 0 0 0 1px;" prefWidth="250.0">
+            <Label text="Map" styleClass="section-title-label"/>
+            <Rectangle fx:id="mapPlaceholder" width="220" height="150.0" fill="#33373D" stroke="#55595D" style="-fx-arc-width: 5; -fx-arc-height: 5;"/>
 
-            <Label text="Inventory" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-underline: true; -fx-padding-top:10px;"/>
-            <ListView fx:id="inventoryListView" prefHeight="150.0"/> <VBox spacing="10" alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+            <Label text="Inventory" styleClass="section-title-label" style="-fx-padding-top:10px;"/>
+            <ListView fx:id="inventoryListView" prefHeight="150.0" VBox.vgrow="NEVER"/> <VBox spacing="10" alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
             <Button text="Character Page" onAction="#handleCharacterPageAction" maxWidth="Infinity"/>
-            <Button text="Socials" onAction="#handleSocialsAction" maxWidth="Infinity"/>
+            <Button text="Socials (Placeholder)" onAction="#handleSocialsAction" maxWidth="Infinity"/>
         </VBox>
         </VBox>
     </right>
 
     <bottom>
-        <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10px; -fx-border-color: #444; -fx-border-width: 1 0 0 0;">
+        <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 10px; -fx-border-color: #444; -fx-border-width: 1px 0 0 0;">
             <Button fx:id="saveAndExitButton" text="Save &amp; Exit to Main Menu" onAction="#handleSaveAndExitAction"/>
         </HBox>
     </bottom>

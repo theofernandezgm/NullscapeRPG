@@ -17,7 +17,7 @@
     -fx-font-size: 32px;
     -fx-font-family: "Roboto Medium", "Serif"; /* Bolder for titles */
     -fx-text-fill: #FFFFFF;   /* White for prominent titles */
-    -fx-padding-bottom: 20px;
+    -fx-padding: 0 0 20px 0; /* Consistent padding definition */
 }
 
 /* --- Button Styling --- */
@@ -41,7 +41,7 @@
 
 .button:pressed {
     -fx-background-color: #303030; /* Darker when pressed */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 5, 0, 0, 1);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 5, 0, 0, 1); /* Less shadow when pressed */
 }
 
 /* --- CheckBox Styling --- */
@@ -67,7 +67,7 @@
 }
 
 .check-box:hover .box {
-    -fx-border-color: #009688; /* Teal border on hover */
+    -fx-border-color: #00BFA5; /* Brighter Teal border on hover for more feedback */
 }
 
 /* --- Slider Styling --- */
@@ -84,19 +84,19 @@
 .slider .thumb {
     -fx-background-color: #009688; /* Teal accent for thumb */
     -fx-background-radius: 10px; /* Circular thumb */
-    -fx-padding: 8px;
+    -fx-padding: 8px; /* Makes thumb appear larger and easier to grab */
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);
 }
 
 .slider .thumb:hover {
-    -fx-background-color: #00796B;
+    -fx-background-color: #00796B; /* Darker teal on hover */
 }
 
 .slider .axis .axis-tick-mark {
     -fx-stroke: #757575; /* Color for tick marks */
 }
 
-.slider .axis .axis-label, .slider .tick-label {
+.slider .axis .axis-label, .slider .tick-label { /* Combined for consistency */
     -fx-text-fill: #BDBDBD; /* Color for tick labels */
     -fx-font-size: 10px;
 }
@@ -108,80 +108,122 @@
     -fx-mark-color: #FFFFFF; /* Color of the dropdown arrow */
     -fx-font-size: 14px;
     -fx-background-radius: 4px;
-    -fx-pref-width: 200px; /* Ensure it has some width */
+    -fx-pref-width: 200px; /* Ensure it has some width, can be overridden in FXML */
 }
 
-.choice-box .label { /* Text of the selected item in the ChoiceBox */
+.choice-box .label { /* Text of the selected item in the ChoiceBox itself */
     -fx-text-fill: #FFFFFF;
-    -fx-padding: 5px 10px 5px 5px;
+    -fx-padding: 5px 10px 5px 5px; /* top right bottom left */
 }
 
-.choice-box .open-button { /* The arrow button part */
-    -fx-padding: 8px;
+.choice-box .open-button { /* The arrow button part of the ChoiceBox */
+    -fx-padding: 8px; /* Adjust padding for the arrow region */
 }
 
 .choice-box .context-menu { /* The dropdown list itself */
     -fx-background-color: #3C3C3C;
-    -fx-background-radius: 0 0 4px 4px;
+    -fx-background-radius: 0 0 4px 4px; /* Match main radius for bottom corners */
     -fx-border-color: #616161;
-    -fx-border-width: 0 1px 1px 1px;
+    -fx-border-width: 0 1px 1px 1px; /* No top border as it connects */
 }
 
-.choice-box .menu-item {
-    -fx-background-color: transparent;
+.choice-box .menu-item { /* Individual items in the dropdown */
+    -fx-background-color: transparent; /* Default state */
 }
 
 .choice-box .menu-item .label { /* Text of items in the dropdown list */
     -fx-text-fill: #E0E0E0;
     -fx-font-size: 14px;
+    -fx-padding: 5px 10px; /* Consistent padding for items */
 }
 
 .choice-box .menu-item:hover {
     -fx-background-color: #5A5A5A; /* Hover color for items in dropdown */
 }
+.choice-box .menu-item:hover .label {
+    -fx-text-fill: #FFFFFF; /* Brighter text on hover */
+}
 
-.choice-box .menu-item:focused { /* Often same as hover for selection indication */
+.choice-box .menu-item:focused { /* Selected item indication in dropdown */
      -fx-background-color: #00796B; /* Teal accent for selected item in dropdown */
 }
 .choice-box .menu-item:focused .label {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #FFFFFF; /* White text for selected item */
 }
 
 
-/* --- ListView Styling (for Load Game screen and ChoiceBox dropdown implicitly) --- */
+/* --- ListView Styling (for Load Game screen and implicitly affects ChoiceBox dropdown) --- */
 .list-view {
-    -fx-background-color: #3C3C3C;
-    -fx-border-color: #616161;
+    -fx-background-color: #3C3C3C; /* Slightly lighter than root for contrast */
+    -fx-border-color: #616161; /* Subtle border */
     -fx-border-width: 1px;
-    -fx-background-insets: 0;
+    -fx-background-insets: 0; /* Important for border visibility */
 }
 
 .list-cell {
-    -fx-text-fill: #E0E0E0;
-    -fx-background-color: transparent;
+    -fx-text-fill: #E0E0E0; /* Default text color for items */
+    -fx-background-color: transparent; /* Default background */
     -fx-padding: 8px 12px;
     -fx-font-size: 14px;
     -fx-border-color: transparent; /* No borders between cells by default */
+     /* -fx-border-width: 0 0 1px 0; -fx-border-color: #4A4A4A; */ /* Optional: subtle separator lines */
 }
 
 .list-cell:filled:hover {
     -fx-background-color: #5A5A5A; /* Hover effect */
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #FFFFFF; /* Brighter text on hover */
 }
 
 .list-cell:filled:selected,
-.list-cell:filled:selected:focused {
+.list-cell:filled:selected:focused { /* Combined for consistency */
     -fx-background-color: #009688; /* Teal accent for selected item */
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #FFFFFF; /* White text for selected item */
 }
 
-.list-cell:empty { /* Style for empty cells if any */
+.list-cell:empty { /* Style for empty cells if any, e.g. placeholder */
     -fx-background-color: transparent;
+    -fx-padding: 8px 12px; /* Keep padding consistent */
 }
+.list-view .placeholder .label { /* Styling for placeholder text like "No save files" */
+    -fx-text-fill: #BDBDBD;
+}
+
 
 /* --- GridPane Styling (optional, if you want to add borders or padding) --- */
 .grid-pane {
     /* -fx-grid-lines-visible: true; */ /* Uncomment to see grid lines for debugging layout */
-    /* -fx-hgap: 10; */ /* Already set in FXML */
-    /* -fx-vgap: 15; */ /* Already set in FXML */
+    /* -fx-hgap: 10; */ /* Usually set in FXML if needed per instance */
+    /* -fx-vgap: 15; */ /* Usually set in FXML if needed per instance */
+}
+
+/* Specific styling for the event log area */
+.text-area {
+    -fx-background-color: #2C2C2C;
+    -fx-text-fill: #C0C0C0; /* Light grey text for readability */
+    -fx-font-family: "Consolas", "Monospaced"; /* Monospaced font for logs */
+    -fx-font-size: 13px;
+    -fx-border-color: #4A4A4A;
+    -fx-border-width: 1px;
+    -fx-background-insets: 0;
+    -fx-padding: 5px;
+}
+
+.text-area .content { /* The actual text content area */
+    -fx-background-color: #2C2C2C; /* Match text-area background */
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: #2C2C2C;
+}
+
+.text-area .scroll-bar:vertical, .text-area .scroll-bar:horizontal {
+    -fx-background-color: #3C3C3C;
+}
+
+.text-area .scroll-bar .thumb {
+    -fx-background-color: #616161;
+    -fx-background-radius: 4px;
+}
+.text-area .scroll-bar .thumb:hover {
+    -fx-background-color: #757575;
 }
